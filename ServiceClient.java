@@ -16,7 +16,6 @@ public class ServiceClient  implements Runnable{
 		{System.out.format("Terminaison pour %s\n", id); ma_connection.close();} 
 		    	}
 	catch (IOException e) {
-	    System.out.format("Terminaison pour %s\n", id);
 	    e.printStackTrace();
 	}
 	return;
@@ -29,7 +28,6 @@ public class ServiceClient  implements Runnable{
     }
     
     public  void run(){
-		// Phase d initialisation 
     	BufferedReader flux_entrant=null;
     	PrintWriter ma_sortie =null;
     	try{ 
@@ -44,9 +42,6 @@ public class ServiceClient  implements Runnable{
 		System.out.println("Erreur d initialisation") ;e1.printStackTrace();} 	
 	
 	    String  message_lu = new String();
-	    // Fin de l initialisation
-	    
-	    // Boucle principale //
 		JFrame jf=new JFrame();
 	    while ( true  ) 
  	    {
