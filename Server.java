@@ -24,8 +24,8 @@ public class Server extends ServerSocket {
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		Server connectionManager = new Server();
-		connectionManager.execute();
+		Server connexion = new Server();
+		connexion.execute();
 	}
 
 }
