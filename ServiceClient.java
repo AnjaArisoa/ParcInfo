@@ -33,13 +33,12 @@ public class ServiceClient  implements Runnable{
     	BufferedReader flux_entrant=null;
     	PrintWriter ma_sortie =null;
     	try{ 
-	    InputStreamReader isr = new InputStreamReader(ma_connection.getInputStream(), "UTF-8");
-	    flux_entrant = new BufferedReader(isr) ; // file d'entrée 
-	    // flux de sortie en mode autoflush
-	    ma_sortie = new PrintWriter(ma_connection.getOutputStream() , true);
-	    String c_ip = ma_connection.getInetAddress().toString() ;
-	    int c_port= ma_connection.getPort();    
-	    ma_sortie.format("[%s] : Hello %s  sur le port %d, \n" ,  id, c_ip, c_port );  
+	    InputStreamReader isr = new InputStreamReader(ma_connection.getInputStream(), "UTF-8");//getInputStream return zavatra azo,lecture socket
+	    flux_entrant = new BufferedReader(isr) ; //les donnees venat du client 
+	    ma_sortie = new PrintWriter(ma_connection.getOutputStream() , true);//l'ip du client et port ou va entrer le client dans le serveur,getOutputStream:ecriture socket
+	    String c_ip = ma_connection.getInetAddress().toString() ;//ip pc
+	    int c_port= ma_connection.getPort();  //port d'entree  
+	    ma_sortie.format("[%s] : Hello %s  sur le port %d, \n" ,  id, c_ip, c_port );//respecte format dams serveur
     	} 
     	catch (Exception e1) {
 		System.out.println("Erreur d initialisation") ;e1.printStackTrace();} 	
@@ -52,12 +51,12 @@ public class ServiceClient  implements Runnable{
 	    while ( true  ) 
  	    {
 	    	try {
-				message_lu = flux_entrant.readLine();
+				message_lu = flux_entrant.readLine();//message lire
 			} 
 	    	catch (IOException ioe) { ;} 
 	    	if (message_lu == null){
 		    	System.out.println( "Client deconnecté, je termine\n" )  ;
-			    terminer();
+			    terminer();//deconnexion
 			    return; }
 		    System.out.format( "%s --> [%s]]\n", id, message_lu);
 			jf.setSize(840,560);
