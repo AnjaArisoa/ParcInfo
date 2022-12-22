@@ -7,10 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ServiceClient  implements Runnable{ 
-	//String to finish the communication  ici c est ctrl-d 	
-	//private static final  	String Finish="end";
-
-	private String Finish=""+(char) 4;
     private  Socket ma_connection;      
     private  String id;
 
